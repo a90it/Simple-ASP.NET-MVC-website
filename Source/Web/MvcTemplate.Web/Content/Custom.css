@@ -1,0 +1,31 @@
+﻿h2{
+    background-color: lawngreen;
+    border-radius: 5px;
+}
+h2.inAdministration{
+    background-color: red;
+    border-radius: 5px;
+}
+#bottom-line{
+    background-color: darkgrey;
+    border-radius: 5px;
+}
+#footerHr{
+    border: 1px solid #000;
+}
+#alreadyVoted{
+    color: green;
+}
+#ApplicationLogo{
+    color: lawngreen;
+}
+.forumPostLink{
+    font-size: 20px;    
+}
+.forumHr{
+    border: 1px solid #808080
+}
+.forumPostBackground{
+    background-color: #dcf6db;
+    border-radius: 5px;
+}

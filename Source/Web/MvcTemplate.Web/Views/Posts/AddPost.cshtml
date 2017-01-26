@@ -1,0 +1,24 @@
+﻿@model MvcTemplate.Web.ViewModels.Posts.PostViewModel
+@{
+    ViewBag.Title = "AddPost";
+}
+
+<h4>Add post:</h4>
+<div>
+    @using (Html.BeginForm("AddPost", "Posts", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div>
+            @Html.LabelFor(x => Model.Title)
+            @Html.TextBoxFor(x => Model.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => Model.Title, null, new { @class = "text-warning" })
+        </div>
+        <div>
+            @Html.LabelFor(x => Model.Content)
+            @Html.TextAreaFor(x => Model.Content, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => Model.Content, null, new { @class = "text-warning" })
+        </div>
+        @Html.AntiForgeryToken()
+        <input type="submit" name="Submit" />
+    }
+</div>
+

@@ -1,0 +1,20 @@
+﻿@model MvcTemplate.Web.ViewModels.Posts.CommentViewModel
+@{
+    ViewBag.Title = "AddComment";
+}
+<div>
+    @using (Html.BeginForm("AddComment", "Posts", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <small>Enter your comment here:</small>
+        <div>
+            @Html.TextAreaFor(x => Model.Content, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => Model.Content, null, new { @class = "text-warning" })
+            @Html.HiddenFor(x => Model.PostId)
+            @Html.AntiForgeryToken()
+        </div>
+        <input type="submit" name="Submit" />
+    }
+</div>
+<!--TODO: Scripts should not be here--> 
+@Scripts.Render("~/bundles/jqueryval")
+

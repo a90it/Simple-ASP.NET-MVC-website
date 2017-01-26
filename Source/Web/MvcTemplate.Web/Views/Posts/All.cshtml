@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNet.Identity
+@model List <MvcTemplate.Web.ViewModels.Posts.PostViewModel>
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>Forum posts:</h2>
+<div>
+    <a style="display:inline" href="/Posts/AddPost" class="btn btn-primary" role="button">New post</a>
+    @using (Html.BeginForm("SearchPosts", "Posts", "filter", FormMethod.Post, new { style = "display:inline" }))
+    {
+        <div class="pull-right" style="display:inline">
+            @Html.TextBox("filter")
+            <input type="submit" value="Search" />
+        </div>
+    }
+</div>
+<hr class="forumHr"/>
+@if (User.IsInRole("Administrator") == false)
+{
+<div>
+    @foreach (var post in Model)
+    {
+        <a class="forumPostLink" href="@post.Url">
+            @Html.Raw(post.Title)
+        </a>
+            <div>@post.CommentsCount comments</div>
+            <div>Created by @post.Author on @post.CreatedOn</div>
+            <hr class="forumHr"/>
+    }
+</div>
+}
+else
+{
+    <div>
+        @foreach (var post in Model)
+        {
+            <div>
+                <a class="forumPostLink" href="@post.Url">
+                    @Html.Raw(post.Title)
+                </a>
+                @Html.ActionLink("Delete", "DeletePost", "Posts", new { id = post.Id }, new { @class = "btn btn-danger pull-right", role = "button" })
+            </div>
+            <div>@post.CommentsCount comments</div>
+            <div>Created by @post.Author on @post.CreatedOn</div>
+            <hr class="forumHr" />
+        }
+    </div>
+}
+

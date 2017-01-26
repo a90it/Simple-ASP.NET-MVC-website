@@ -1,0 +1,43 @@
+﻿@model MvcTemplate.Web.ViewModels.Posts.PostViewModel
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "ById";
+}
+
+    <h4>Post:</h4>
+<div class="forumPostBackground">
+    <strong>@Model.Title</strong>
+    <div>@Model.Content</div>
+    <small>Created by @Model.Author on @Model.CreatedOn</small>
+</div>
+<br />
+<div>Comments:
+    @if (User.Identity.IsAuthenticated == true)
+    {
+        <button id="target" class="btn btn-success pull-right" role="button">Comment on this post</button>
+    }
+    else
+    {
+        <a href="/Account/Login?ReturnUrl=@Request.Url.PathAndQuery" class="btn btn-default pull-right" role="button">Login to post a comment</a>
+    }
+</div>
+<div id="formPlace"></div>
+<hr class="forumHr" />
+@foreach (var comment in Model.Comments)
+{
+    <div>@comment.Content</div>
+    <small>Created by @comment.Author on @comment.CreatedOn</small>
+    <hr />
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    <script>
+        $("#target").click(function () {
+            $("#formPlace").load('@Url.Action("AddComment","Posts", new { postId = Model.Id })');
+        });
+    </script>
+}
+

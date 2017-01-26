@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNet.Identity
+@model List<MvcTemplate.Web.ViewModels.Suggestions.SuggestionViewModel>
+@{
+    ViewBag.Title = "All";
+}
+<h2>All suggestions for this website:</h2>
+<div><a href="/Suggestions/AddSuggestion" class="btn btn-primary" role="button">New suggestion</a></div>
+<hr />
+@if (User.IsInRole("Administrator") == false)
+{
+<div>
+    @foreach (var suggestion in Model)
+    {
+            <a href="@suggestion.Url">
+                @Html.Raw(suggestion.Title)
+            </a>
+            <div>Votes: @suggestion.Votes</div>
+            <hr />
+    }
+</div>
+}
+else
+{
+    <div>
+        @foreach (var suggestion in Model)
+        {
+            <a href="@suggestion.Url">
+                @Html.Raw(suggestion.Title)
+            </a>
+            @Html.ActionLink("Delete", "DeleteSuggestion", "Suggestions", new { id = suggestion.Id }, new { @class = "btn btn-danger pull-right", role = "button" })
+            <div>Votes: @suggestion.Votes</div>
+            <hr />
+        }
+    </div>
+}
+

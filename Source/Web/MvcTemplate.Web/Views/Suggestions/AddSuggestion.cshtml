@@ -1,0 +1,23 @@
+﻿@model MvcTemplate.Web.ViewModels.Suggestions.SuggestionViewModel
+@{
+    ViewBag.Title = "AddSuggestion";
+}
+
+<h4>Add suggestion:</h4>
+<div>
+    @using (Html.BeginForm("AddSuggestion", "Suggestions", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div>
+            @Html.LabelFor(x => Model.Title)
+            @Html.TextBoxFor(x => Model.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => Model.Title, null, new { @class = "text-warning" })
+        </div>
+        <div>
+            @Html.LabelFor(x => Model.Content)
+            @Html.TextBoxFor(x => Model.Content, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => Model.Content, null, new { @class = "text-warning" })
+        </div>
+        @Html.AntiForgeryToken()
+        <input type="submit" name="Submit"/>
+    }
+</div >

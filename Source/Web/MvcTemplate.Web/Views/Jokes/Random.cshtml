@@ -1,0 +1,29 @@
+﻿@model MvcTemplate.Web.ViewModels.Jokes.JokesViewModel
+@{
+    ViewBag.Title = "Random";
+}
+<h2>Random jokes:</h2>
+<div class="row">
+    @foreach (var joke in Model.Jokes)
+    {
+        <div class="col-md-4">
+            <a href="@joke.Url">
+                @Html.Raw(joke.Content.Replace("\n", "<br />"))
+            </a>
+            <div>Category: @joke.Category</div>
+        </div>
+    }
+</div>
+<h4>All categories: (cached)</h4>
+<div class="row">
+    @foreach (var category in Model.Categories)
+    {
+        <div class="col-md-4">
+            <a href="@category.Url">
+                @Html.Raw(category.Name)
+            </a>            
+        </div>
+    }
+</div>
+
+

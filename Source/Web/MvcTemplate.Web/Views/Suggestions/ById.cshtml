@@ -1,0 +1,44 @@
+﻿@model MvcTemplate.Web.ViewModels.Suggestions.SuggestionWithVotingStatsViewModel
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "ById";
+}
+    <h4>Suggestion:</h4>
+    <strong>@Model.Suggestion.Title</strong>
+    <div>@Model.Suggestion.Content</div>
+    <div>Author: @Model.Suggestion.Author</div>
+    <div>Total votes: @Model.Suggestion.Votes</div>
+<hr />
+
+@if (User.Identity.IsAuthenticated && Model.CurrentUserHasVoted == false)
+{
+    <div>Like this suggestion? Upvote it:</div>
+    <button id="target" class="btn btn-success" role="button">Upvote</button>
+}
+else if (User.Identity.IsAuthenticated && Model.CurrentUserHasVoted == true)
+{
+    <div id="alreadyVoted">You have already upvoted this suggestion!</div>
+}
+else
+{
+    <div>Like this suggestion? Upvote it:</div>
+    <a href="/Account/Login?ReturnUrl=@Request.Url.PathAndQuery" class="btn btn-default" role="button">Login to upvote</a>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    <script>
+        $("#target").click(function () {
+            var id = @Model.Suggestion.Id;
+            $.post('/VotesForSuggestion/Vote/', { suggestionId: id })
+            .done(function() {
+                location.reload();
+            })
+        });
+    </script>
+}
+
+
+
