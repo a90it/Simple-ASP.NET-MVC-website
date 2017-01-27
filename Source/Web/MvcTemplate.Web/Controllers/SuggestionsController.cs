@@ -60,7 +60,7 @@
             return this.Redirect("/Suggestions/All");
         }
 
-        // TODO: HttpDelete?
+        // TODO: HttpDelete
         [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public ActionResult DeleteSuggestion(int id)
         {

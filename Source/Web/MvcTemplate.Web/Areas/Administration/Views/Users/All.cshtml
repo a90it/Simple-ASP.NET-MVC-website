@@ -1,7 +1,11 @@
-﻿
+﻿@model List<MvcTemplate.Web.Areas.Administration.ViewModels.Users.UserViewModel>
 @{
     ViewBag.Title = "All";
 }
 
-<h2>All</h2>
+<h2 class="inAdministration">Manage users:</h2>
+@foreach (var item in Model)
+{
+    <div>@item.UserName</div>
+}
 

@@ -3,5 +3,5 @@
     ViewBag.Title = "Index";
 }
 
-<h2 class="inAdministration">Administration Area:</h2>
-COMING SOON...
+<h2 class="inAdministration">Administration area - homepage:</h2>
+@Html.ActionLink("Manage users", "All", "Users", new { area = "Administration" }, new { @class = "btn btn-danger", role = "button" })

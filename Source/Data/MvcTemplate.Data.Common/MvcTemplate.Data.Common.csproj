@@ -51,8 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbRepository{T}.cs" />
-    <Compile Include="IDbRepository{T}.cs" />
+    <Compile Include="Repositories\DbGenericRepository.cs" />
+    <Compile Include="Repositories\DbRepository{T}.cs" />
+    <Compile Include="Repositories\Interfaces\IDbGenericRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDbRepository{T}.cs" />
     <Compile Include="Models\BaseModel{TKey}.cs" />
     <Compile Include="Models\IAuditInfo.cs" />
     <Compile Include="Models\IDeletableEntity.cs" />
@@ -72,6 +74,7 @@
       <Link>stylecop.json</Link>
     </AdditionalFiles>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

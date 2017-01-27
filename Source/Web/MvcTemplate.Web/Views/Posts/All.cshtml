@@ -11,6 +11,7 @@
     {
         <div class="pull-right" style="display:inline">
             @Html.TextBox("filter")
+            @Html.AntiForgeryToken()
             <input type="submit" value="Search" />
         </div>
     }
@@ -46,5 +47,9 @@ else
             <hr class="forumHr" />
         }
     </div>
+}
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
 }
 

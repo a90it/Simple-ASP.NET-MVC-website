@@ -44,6 +44,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SearchPosts(string filter)
         {
             var result = this.posts.Search(filter).To<PostViewModel>().ToList();
@@ -66,7 +67,7 @@
             return this.Redirect("/Posts/All");
         }
 
-        // TODO: HttpDelete?
+        // TODO: HttpDelete
         [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public ActionResult DeletePost(int id)
         {
