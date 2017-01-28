@@ -11,5 +11,7 @@
         JokeCategory EnsureCategory(string name);
 
         JokeCategory GetById(string id);
+
+        void DeleteById(int id);
     }
 }

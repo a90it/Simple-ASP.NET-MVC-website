@@ -18,5 +18,11 @@
         {
             return this.users.All().OrderBy(x => x.UserName);
         }
+
+        public ApplicationUser GetById(string id)
+        {
+            var user = this.users.GetById(id);
+            return user;
+        }
     }
 }

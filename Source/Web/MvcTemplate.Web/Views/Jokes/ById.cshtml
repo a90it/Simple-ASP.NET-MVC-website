@@ -3,9 +3,24 @@
     ViewBag.Title = "ById";
 }
 <h4>Joke:</h4>
+@if (User.IsInRole("Administrator") == false)
+{
 <div>
     @Model.Content
 </div>
 <div>
     Category: @Model.Category
 </div>
+}
+else
+{
+    <div>
+        <div>
+            @Model.Content
+        </div>
+        @Html.ActionLink("Permanent delete", "DeleteJoke", "Jokes", new { id = Model.Id }, new { @class = "btn btn-danger pull-right", role = "button" })
+    </div>
+    <div>
+        Category: @Model.Category
+    </div>    
+}       

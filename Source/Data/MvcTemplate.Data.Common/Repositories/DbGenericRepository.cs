@@ -7,7 +7,6 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    // Used for users
     public class DbGenericRepository<T, TKey> : IDbGenericRepository<T, TKey>
         where T : class
     {

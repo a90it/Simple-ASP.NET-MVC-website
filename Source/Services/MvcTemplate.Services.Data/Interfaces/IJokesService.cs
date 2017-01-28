@@ -11,5 +11,7 @@
         Joke GetById(string id);
 
         IQueryable<Joke> GetByCategory(int categoryId);
+
+        void DeleteById(int id);
     }
 }

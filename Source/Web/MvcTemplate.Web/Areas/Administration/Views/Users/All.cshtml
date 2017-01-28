@@ -4,8 +4,13 @@
 }
 
 <h2 class="inAdministration">Manage users:</h2>
-@foreach (var item in Model)
-{
-    <div>@item.UserName</div>
-}
+<div class="row">
+    @foreach (var user in Model)
+    {
+        <div class="col-md-2">
+            @Html.ActionLink(user.UserName, "ById", "Users", new { area = "Administration", id = user.Id }, null)
+        </div>
+    }
+</div>
+
 

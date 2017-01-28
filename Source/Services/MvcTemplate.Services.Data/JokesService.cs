@@ -35,5 +35,12 @@
         {
             return this.jokes.All().OrderBy(x => Guid.NewGuid()).Take(count);
         }
+
+        public void DeleteById(int id)
+        {
+            var joke = this.jokes.GetById(id);
+            this.jokes.HardDelete(joke);
+            this.jokes.Save();
+        }
     }
 }

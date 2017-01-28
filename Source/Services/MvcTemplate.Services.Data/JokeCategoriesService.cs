@@ -1,5 +1,6 @@
 ﻿namespace MvcTemplate.Services.Data
 {
+    using System;
     using System.Linq;
 
     using MvcTemplate.Data.Common;
@@ -12,6 +13,13 @@
         public JokeCategoriesService(IDbRepository<JokeCategory> categories)
         {
             this.categories = categories;
+        }
+
+        public void DeleteById(int id)
+        {
+            var category = this.categories.GetById(id);
+            this.categories.HardDelete(category);
+            this.categories.Save();
         }
 
         public JokeCategory EnsureCategory(string name)

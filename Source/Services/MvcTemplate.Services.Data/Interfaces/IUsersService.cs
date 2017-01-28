@@ -10,5 +10,7 @@
     public interface IUsersService
     {
         IQueryable<ApplicationUser> GetAll();
+
+        ApplicationUser GetById(string id);
     }
 }

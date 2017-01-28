@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
+    using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
 
@@ -12,5 +13,7 @@
         public string Id { get; set; }
 
         public string UserName { get; set; }
+
+        public ICollection<string> UserRoles { get; set; }
     }
 }

@@ -23,5 +23,12 @@
             var users = this.users.GetAll().To<UserViewModel>().ToList();
             return this.View(users);
         }
+
+        public ActionResult ById(string id)
+        {
+            var userTemp = this.users.GetById(id);
+            var user = this.Mapper.Map<UserViewModel>(userTemp);
+            return this.View(user);
+        }
     }
 }

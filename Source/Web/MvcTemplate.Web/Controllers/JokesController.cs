@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+    using Common;
     using MvcTemplate.Services.Data;
     using MvcTemplate.Web.Infrastructure.Mapping;
     using ViewModels.Jokes;
@@ -40,6 +41,22 @@
             var joke = this.jokes.GetById(id);
             var viewModel = this.Mapper.Map<JokeViewModel>(joke);
             return this.View(viewModel);
+        }
+
+        // TODO: HttpDelete
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
+        public ActionResult DeleteJoke(int id)
+        {
+            this.jokes.DeleteById(id);
+            return this.Redirect("/Jokes/Random");
+        }
+
+        // TODO: HttpDelete
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
+        public ActionResult DeleteCategory(int id)
+        {
+            this.jokeCategories.DeleteById(id);
+            return this.Redirect("/Jokes/Random");
         }
 
         public ActionResult Category(string id)
