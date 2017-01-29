@@ -8,7 +8,7 @@
         <small>Enter your comment here:</small>
         <div>
             @Html.TextAreaFor(x => Model.Content, new { @class = "form-control" })
-            @Html.ValidationMessageFor(x => Model.Content, null, new { @class = "text-warning" })
+            @Html.ValidationMessageFor(x => Model.Content, null, new { @class = "text-info" })
             @Html.HiddenFor(x => Model.PostId)
             @Html.AntiForgeryToken()
         </div>

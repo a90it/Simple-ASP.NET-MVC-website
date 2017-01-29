@@ -4,4 +4,7 @@
 }
 
 <h2 class="inAdministration">Administration area - homepage:</h2>
-@Html.ActionLink("Manage users", "All", "Users", new { area = "Administration" }, new { @class = "btn btn-danger", role = "button" })
+<div>
+    @Html.ActionLink("Manage users", "All", "Users", new { area = "Administration" }, new { @class = "btn btn-warning", role = "button" })
+    @Html.ActionLink("Add new joke", "Create", "ManageJokes", new { area = "Administration" }, new { @class = "btn btn-warning", role = "button" })
+</div>

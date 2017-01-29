@@ -4,7 +4,7 @@
     using MvcTemplate.Data.Models;
     using MvcTemplate.Web.Infrastructure.Mapping;
 
-    public class JokeCategoryViewModel : IMapFrom<JokeCategory>
+    public class JokeCategoryViewModel : IMapFrom<JokeCategory>, IMapTo<JokeCategory>
     {
         public int Id { get; set; }
 

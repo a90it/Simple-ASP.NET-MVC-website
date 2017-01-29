@@ -42,5 +42,11 @@
             this.jokes.HardDelete(joke);
             this.jokes.Save();
         }
+
+        public void Create(Joke joke)
+        {
+            this.jokes.Add(joke);
+            this.jokes.Save();
+        }
     }
 }

@@ -13,5 +13,7 @@
         IQueryable<Joke> GetByCategory(int categoryId);
 
         void DeleteById(int id);
+
+        void Create(Joke joke);
     }
 }

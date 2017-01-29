@@ -10,12 +10,12 @@
         <div>
             @Html.LabelFor(x => Model.Title)
             @Html.TextBoxFor(x => Model.Title, new { @class = "form-control" })
-            @Html.ValidationMessageFor(x => Model.Title, null, new { @class = "text-warning" })
+            @Html.ValidationMessageFor(x => Model.Title, null, new { @class = "text-info" })
         </div>
         <div>
             @Html.LabelFor(x => Model.Content)
             @Html.TextBoxFor(x => Model.Content, new { @class = "form-control" })
-            @Html.ValidationMessageFor(x => Model.Content, null, new { @class = "text-warning" })
+            @Html.ValidationMessageFor(x => Model.Content, null, new { @class = "text-info" })
         </div>
         @Html.AntiForgeryToken()
         <input type="submit" name="Submit"/>

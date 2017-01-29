@@ -36,19 +36,19 @@
             return this.View(post);
         }
 
-        [HttpGet]
-        [Authorize]
-        public ActionResult AddPost()
-        {
-            return this.View();
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SearchPosts(string filter)
         {
             var result = this.posts.Search(filter).To<PostViewModel>().ToList();
             return this.View("All", result);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult AddPost()
+        {
+            return this.View();
         }
 
         [HttpPost]

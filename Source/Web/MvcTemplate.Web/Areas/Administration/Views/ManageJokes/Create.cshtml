@@ -1,0 +1,27 @@
+﻿@model MvcTemplate.Web.ViewModels.Jokes.JokeViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h4>Add joke:</h4>
+<div>
+    @using (Html.BeginForm("Create", "ManageJokes", new { area = "Administration" }, FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div>
+            @Html.LabelFor(x => Model.Content)
+            @Html.TextAreaFor(x => Model.Content, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => Model.Content, null, new { @class = "text-info" })
+        </div>
+        <div>
+            <div>
+                @Html.LabelFor(x => Model.Category)
+                <span>(If this category does not exist already, a new one will be created)</span>
+            </div>
+            @Html.TextBoxFor(x => Model.Category, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => Model.Category, null, new { @class = "text-info" })
+        </div>
+        @Html.AntiForgeryToken()
+        <input type="submit" name="Submit" />
+    }
+</div>
+
