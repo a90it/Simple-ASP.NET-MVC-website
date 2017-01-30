@@ -3,15 +3,14 @@
     using System.Data.Entity;
     using System.Reflection;
     using System.Web.Mvc;
-
     using Autofac;
     using Autofac.Integration.Mvc;
-
     using Controllers;
-
     using Data;
     using Data.Common;
-
+    using Data.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Services.Data;
     using Services.Web;
 
@@ -59,6 +58,11 @@
 
             var servicesAssembly = Assembly.GetAssembly(typeof(IJokesService));
             builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
+
+            builder.RegisterType<UserStore<ApplicationUser>>()
+                    .As<IUserStore<ApplicationUser>>();
+
+            builder.RegisterType<UserManager<ApplicationUser>>();
 
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))

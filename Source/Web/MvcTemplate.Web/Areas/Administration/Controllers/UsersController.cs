@@ -41,6 +41,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditUser(UserViewModel viewModel)
         {
             var changedUser = this.users.GetById(viewModel.Id);
@@ -58,6 +59,13 @@
             var userTemp = this.users.GetById(id);
             var user = this.Mapper.Map<UserViewModel>(userTemp);
             return this.View(user);
+        }
+
+        // TODO: HttpPost
+        public ActionResult MakeAdministrator(string userId)
+        {
+            this.users.MakeAdministrator(userId);
+            return this.Redirect("/Administration/Users/All");
         }
     }
 }

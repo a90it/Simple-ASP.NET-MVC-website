@@ -14,5 +14,7 @@
         ApplicationUser GetById(string id);
 
         void UpdateChanges(ApplicationUser changedUser);
+
+        void MakeAdministrator(string userId);
     }
 }

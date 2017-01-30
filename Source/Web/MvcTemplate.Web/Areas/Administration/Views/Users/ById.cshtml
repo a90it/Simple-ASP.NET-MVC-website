@@ -5,7 +5,10 @@
 <div>
     @if (Model.Role != "Administrator")
     {
-    @Html.ActionLink("Edit profile", "EditUser", "Users", new { id = Model.Id }, new { @class = "btn btn-warning pull-right", role = "button" })
+        <div class="pull-right">
+            @Html.ActionLink("Edit profile", "EditUser", "Users", new { id = Model.Id }, new { @class = "btn btn-warning", role = "button" })
+            @Html.ActionLink("Make this user an administrator", "MakeAdministrator", "Users", new { userId = Model.Id }, new { @class = "btn btn-warning", role = "button" })
+        </div>
     }
     <h4>User:</h4>
 </div>

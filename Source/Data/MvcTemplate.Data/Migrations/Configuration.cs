@@ -35,6 +35,8 @@
             const string AdministratorPassword = AdministratorUserName;
             const string NormalUserName = "user@user.com";
             const string NormalPassword = NormalUserName;
+            const string NormalUserName1 = "abuser@abuser.com";
+            const string NormalPassword1 = NormalUserName1;
 
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);
@@ -48,10 +50,12 @@
             var userManager = new UserManager<ApplicationUser>(userStore);
             var adminUser = new ApplicationUser { UserName = AdministratorUserName, Email = AdministratorUserName };
             var normalUser = new ApplicationUser { UserName = NormalUserName, Email = NormalUserName };
+            var normalUser1 = new ApplicationUser { UserName = NormalUserName1, Email = NormalUserName1 };
             if (context.Users.Any() == false)
             {
                 userManager.Create(adminUser, AdministratorPassword);
                 userManager.Create(normalUser, NormalPassword);
+                userManager.Create(normalUser1, NormalPassword1);
                 userManager.AddToRole(adminUser.Id, "Administrator");
             }
 

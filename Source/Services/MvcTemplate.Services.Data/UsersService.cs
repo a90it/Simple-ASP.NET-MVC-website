@@ -2,16 +2,19 @@
 {
     using System;
     using System.Linq;
+    using Microsoft.AspNet.Identity;
     using MvcTemplate.Data.Common;
     using MvcTemplate.Data.Models;
 
     public class UsersService : IUsersService
     {
         private readonly IDbGenericRepository<ApplicationUser, string> users;
+        private readonly UserManager<ApplicationUser> manager;
 
-        public UsersService(IDbGenericRepository<ApplicationUser, string> users)
+        public UsersService(IDbGenericRepository<ApplicationUser, string> users, UserManager<ApplicationUser> manager)
         {
             this.users = users;
+            this.manager = manager;
         }
 
         public void UpdateChanges(ApplicationUser changedUser)
@@ -31,6 +34,12 @@
         {
             var user = this.users.GetById(id);
             return user;
+        }
+
+        public void MakeAdministrator(string userId)
+        {
+            var user = this.GetById(userId);
+            this.manager.AddToRole(user.Id, "Administrator");
         }
     }
 }
