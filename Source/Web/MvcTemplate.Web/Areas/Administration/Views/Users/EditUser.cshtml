@@ -9,9 +9,14 @@
         <div>
             @Html.LabelFor(x => Model.UserName)
             @Html.TextBoxFor(x => Model.UserName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(x => Model.UserName, null, new { @class = "text-info" })
-            @Html.AntiForgeryToken()
+            @Html.ValidationMessageFor(x => Model.UserName, null, new { @class = "text-info" })            
         </div>
+        <div>
+            @Html.LabelFor(x => Model.Email)
+            @Html.TextBoxFor(x => Model.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => Model.Email, null, new { @class = "text-info" })
+        </div>
+        @Html.AntiForgeryToken()
         <input type="submit" name="Submit" value="Edit"/>
     }
 </div>

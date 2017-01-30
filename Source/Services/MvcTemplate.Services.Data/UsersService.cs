@@ -18,6 +18,7 @@
         {
             var user = this.users.GetById(changedUser.Id);
             user.UserName = changedUser.UserName;
+            user.Email = changedUser.Email;
             this.users.Save();
         }
 

@@ -47,6 +47,7 @@
 
             // TODO: use automapper for mapping instead
             changedUser.UserName = viewModel.UserName;
+            changedUser.Email = viewModel.Email;
             this.users.UpdateChanges(changedUser);
             return this.Redirect(string.Format("/Administration/Users/ById/{0}", viewModel.Id));
         }
