@@ -39,11 +39,9 @@
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);
             var adminRole = new IdentityRole { Name = "Administrator" };
-            var normalRole = new IdentityRole { Name = "NormalUser" };
             if (context.Roles.Any() == false)
             {
                 roleManager.Create(adminRole);
-                roleManager.Create(normalRole);
             }
 
             var userStore = new UserStore<ApplicationUser>(context);
@@ -55,7 +53,6 @@
                 userManager.Create(adminUser, AdministratorPassword);
                 userManager.Create(normalUser, NormalPassword);
                 userManager.AddToRole(adminUser.Id, "Administrator");
-                userManager.AddToRole(normalUser.Id, "NormalUser");
             }
 
             // Import Suggestions

@@ -1,0 +1,18 @@
+﻿@model MvcTemplate.Web.Areas.Administration.ViewModels.Users.UserViewModel
+@{
+    ViewBag.Title = "EditUser";
+}
+<div>
+    <h4>Edit @Model.UserName's profile:</h4>
+    @using (Html.BeginForm("EditUser", "Users", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div>
+            @Html.LabelFor(x => Model.UserName)
+            @Html.TextBoxFor(x => Model.UserName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => Model.UserName, null, new { @class = "text-info" })
+            @Html.AntiForgeryToken()
+        </div>
+        <input type="submit" name="Submit" value="Edit"/>
+    }
+</div>
+

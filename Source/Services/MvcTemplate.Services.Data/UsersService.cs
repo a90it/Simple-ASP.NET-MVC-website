@@ -14,6 +14,13 @@
             this.users = users;
         }
 
+        public void UpdateChanges(ApplicationUser changedUser)
+        {
+            var user = this.users.GetById(changedUser.Id);
+            user.UserName = changedUser.UserName;
+            this.users.Save();
+        }
+
         public IQueryable<ApplicationUser> GetAll()
         {
             return this.users.All().OrderBy(x => x.UserName);

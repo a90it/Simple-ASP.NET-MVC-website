@@ -2,6 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Web;
     using AutoMapper;
@@ -12,8 +14,10 @@
     {
         public string Id { get; set; }
 
+        [Required]
+        [DisplayName("User name")]
         public string UserName { get; set; }
 
-        public ICollection<string> UserRoles { get; set; }
+        public string Role { get; set; }
     }
 }

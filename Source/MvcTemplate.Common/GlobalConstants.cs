@@ -3,6 +3,6 @@
     public class GlobalConstants
     {
         public const string AdministratorRoleName = "Administrator";
-        public const string NormalUserRoleName = "NormalUser";
+        public const string NormalUserRoleName = "Normal user";
     }
 }

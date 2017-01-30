@@ -267,6 +267,7 @@
     <Content Include="Areas\Administration\Views\Users\All.cshtml" />
     <Content Include="Areas\Administration\Views\Users\ById.cshtml" />
     <Content Include="Areas\Administration\Views\ManageJokes\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Users\EditUser.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />

@@ -28,6 +28,34 @@
         {
             var userTemp = this.users.GetById(id);
             var user = this.Mapper.Map<UserViewModel>(userTemp);
+            if (userTemp.Roles.Any() == true)
+            {
+                user.Role = GlobalConstants.AdministratorRoleName;
+            }
+            else
+            {
+                user.Role = GlobalConstants.NormalUserRoleName;
+            }
+
+            return this.View(user);
+        }
+
+        [HttpPost]
+        public ActionResult EditUser(UserViewModel viewModel)
+        {
+            var changedUser = this.users.GetById(viewModel.Id);
+
+            // TODO: use automapper for mapping instead
+            changedUser.UserName = viewModel.UserName;
+            this.users.UpdateChanges(changedUser);
+            return this.Redirect(string.Format("/Administration/Users/ById/{0}", viewModel.Id));
+        }
+
+        [HttpGet]
+        public ActionResult EditUser(string id)
+        {
+            var userTemp = this.users.GetById(id);
+            var user = this.Mapper.Map<UserViewModel>(userTemp);
             return this.View(user);
         }
     }

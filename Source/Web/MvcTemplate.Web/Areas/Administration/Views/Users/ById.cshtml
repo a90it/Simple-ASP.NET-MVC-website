@@ -2,8 +2,13 @@
 @{
     ViewBag.Title = "ById";
 }
-
-<h4>User:</h4>
+<div>
+    @if (Model.Role != "Administrator")
+    {
+    @Html.ActionLink("Edit profile", "EditUser", "Users", new { id = Model.Id }, new { @class = "btn btn-warning pull-right", role = "button" })
+    }
+    <h4>User:</h4>
+</div>
 <div>Username: @Model.UserName</div>
-<div>Roles:</div>
+<div>Role: @Model.Role</div>
 
