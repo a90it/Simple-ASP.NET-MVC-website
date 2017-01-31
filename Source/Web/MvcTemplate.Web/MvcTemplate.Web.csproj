@@ -225,9 +225,8 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Jokes\JokeCategoryViewModel.cs" />
-    <Compile Include="ViewModels\Jokes\JokesByCategoryViewModel.cs" />
     <Compile Include="ViewModels\Jokes\JokeViewModel.cs" />
-    <Compile Include="ViewModels\Jokes\JokesViewModel.cs" />
+    <Compile Include="ViewModels\Jokes\JokesAndCategoriesViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\FactorViewModel.cs" />

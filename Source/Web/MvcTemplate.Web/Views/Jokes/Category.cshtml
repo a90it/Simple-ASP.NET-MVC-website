@@ -1,10 +1,10 @@
-﻿@model MvcTemplate.Web.ViewModels.Jokes.JokesByCategoryViewModel
+﻿@model MvcTemplate.Web.ViewModels.Jokes.JokeCategoryViewModel
 @{
     ViewBag.Title = "Jokes";
 }
 <div>
-    @Html.ActionLink("Permanent delete of category + jokes in it", "DeleteCategory", "Jokes", new { id = Model.Category.Id }, new { @class = "btn btn-danger pull-right", role = "button" })
-    <h4>Joke category: @Model.Category.Name</h4>
+    @Html.ActionLink("Permanent delete of category + jokes in it", "DeleteCategory", "Jokes", new { id = Model.Id }, new { @class = "btn btn-danger pull-right", role = "button" })
+    <h4>Joke category: @Model.Name</h4>
 </div>
 <div class="row">
     @foreach (var joke in Model.Jokes)

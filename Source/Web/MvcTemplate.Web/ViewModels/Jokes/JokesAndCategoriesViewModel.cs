@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class JokesViewModel
+    public class JokesAndCategoriesViewModel
     {
         public IEnumerable<JokeViewModel> Jokes { get; set; }
 

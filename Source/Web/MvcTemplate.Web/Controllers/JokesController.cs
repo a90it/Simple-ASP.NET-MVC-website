@@ -27,7 +27,7 @@
                     "categories",
                     () => this.jokeCategories.GetAll().To<JokeCategoryViewModel>().ToList(),
                     30 * 60);
-            var viewModel = new JokesViewModel
+            var viewModel = new JokesAndCategoriesViewModel
             {
                 Jokes = jokes,
                 Categories = categories
@@ -63,13 +63,7 @@
         {
             var categoryTemp = this.jokeCategories.GetById(id);
             var category = this.Mapper.Map<JokeCategoryViewModel>(categoryTemp);
-            var jokes = this.jokes.GetByCategory(int.Parse(id)).To<JokeViewModel>();
-            var viewModel = new JokesByCategoryViewModel()
-            {
-                Jokes = jokes,
-                Category = category
-            };
-            return this.View(viewModel);
+            return this.View(category);
         }
     }
 }

@@ -25,12 +25,6 @@
             return joke;
         }
 
-        public IQueryable<Joke> GetByCategory(int categoryId)
-        {
-            var jokes = this.jokes.All().Where(x => x.CategoryId == categoryId);
-            return jokes;
-        }
-
         public IQueryable<Joke> GetRandomJokes(int count)
         {
             return this.jokes.All().OrderBy(x => Guid.NewGuid()).Take(count);
