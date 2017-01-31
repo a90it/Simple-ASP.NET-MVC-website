@@ -3,4 +3,4 @@ This is a website I am currently making to practise what I have learned in Teler
 The main part of the website is a simple forum.<br/>
 Implements two types of individual user accounts - admin and normal.<br/>
 The website is still in development.<br/>
-Hosted at http://simpleaspnetmvcwebsite.azurewebsites.net/
+Hosted at http://simpleaspnetmvcwebsite.azurewebsites.net
