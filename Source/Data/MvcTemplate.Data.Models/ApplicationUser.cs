@@ -14,10 +14,10 @@
             this.Comments = new HashSet<Comment>();
             this.Posts = new HashSet<Post>();
             this.Suggestions = new HashSet<Suggestion>();
-            this.VotesForSuggestions = new HashSet<VoteForSuggestion>();
+            this.Votes = new HashSet<Vote>();
         }
 
-        public virtual ICollection<VoteForSuggestion> VotesForSuggestions { get; set; }
+        public virtual ICollection<Vote> Votes { get; set; }
 
         public virtual ICollection<Suggestion> Suggestions { get; set; }
 

@@ -17,7 +17,7 @@
         {
         }
 
-        public IDbSet<VoteForSuggestion> VotesForSuggestion { get; set; }
+        public IDbSet<Vote> Votes { get; set; }
 
         public IDbSet<Suggestion> Suggestions { get; set; }
 

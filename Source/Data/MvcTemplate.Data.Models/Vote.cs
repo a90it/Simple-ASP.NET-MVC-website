@@ -9,7 +9,7 @@
     using System.Threading.Tasks;
     using MvcTemplate.Data.Common.Models;
 
-    public class VoteForSuggestion : BaseModel<int>
+    public class Vote : BaseModel<int>
     {
         [Required]
         public int SuggestionId { get; set; }

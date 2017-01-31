@@ -109,6 +109,10 @@
     <Compile Include="Migrations\201701250749401_Fix7.Designer.cs">
       <DependentUpon>201701250749401_Fix7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701311344293_VotesFix.cs" />
+    <Compile Include="Migrations\201701311344293_VotesFix.Designer.cs">
+      <DependentUpon>201701311344293_VotesFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -163,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701250749401_Fix7.resx">
       <DependentUpon>201701250749401_Fix7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701311344293_VotesFix.resx">
+      <DependentUpon>201701311344293_VotesFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public interface IVotesForSuggestionService
+    public interface IVotesService
     {
         void Add(string userId, int suggestionId);
     }

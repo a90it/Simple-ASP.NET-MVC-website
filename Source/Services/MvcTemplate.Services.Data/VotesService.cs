@@ -8,11 +8,11 @@
     using MvcTemplate.Data.Common;
     using MvcTemplate.Data.Models;
 
-    public class VotesForSuggestionService : IVotesForSuggestionService
+    public class VotesService : IVotesService
     {
-        private readonly IDbRepository<VoteForSuggestion> votes;
+        private readonly IDbRepository<Vote> votes;
 
-        public VotesForSuggestionService(IDbRepository<VoteForSuggestion> votes)
+        public VotesService(IDbRepository<Vote> votes)
         {
             this.votes = votes;
         }
@@ -22,7 +22,7 @@
             var vote = this.votes.All().FirstOrDefault(x => x.AuthorId == userId && x.SuggestionId == suggestionId);
             if (vote == null)
             {
-                vote = new VoteForSuggestion()
+                vote = new Vote()
                 {
                     AuthorId = userId,
                     SuggestionId = suggestionId,

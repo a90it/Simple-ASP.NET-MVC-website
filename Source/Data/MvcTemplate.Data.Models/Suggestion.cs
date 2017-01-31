@@ -9,7 +9,7 @@
     {
         public Suggestion()
         {
-            this.Votes = new HashSet<VoteForSuggestion>();
+            this.Votes = new HashSet<Vote>();
         }
 
         [Required]
@@ -20,7 +20,7 @@
         [StringLength(300, ErrorMessage = "Must be between 10 and 300", MinimumLength = 10)]
         public string Content { get; set; }
 
-        public virtual ICollection<VoteForSuggestion> Votes { get; set; }
+        public virtual ICollection<Vote> Votes { get; set; }
 
         public string AuthorId { get; set; }
 

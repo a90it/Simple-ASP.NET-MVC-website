@@ -15,10 +15,12 @@
     public class SuggestionsController : BaseController
     {
         private readonly ISuggestionService suggestions;
+        private readonly IVotesService votes;
 
-        public SuggestionsController(ISuggestionService suggestions)
+        public SuggestionsController(ISuggestionService suggestions, IVotesService votes)
         {
             this.suggestions = suggestions;
+            this.votes = votes;
         }
 
         public ActionResult All()
@@ -66,6 +68,13 @@
         {
             this.suggestions.DeleteById(id);
             return this.Redirect("/Suggestions/All");
+        }
+
+        [HttpPost]
+        public void Vote(int suggestionId)
+        {
+            var userId = this.User.Identity.GetUserId();
+            this.votes.Add(userId, suggestionId);
         }
     }
 }

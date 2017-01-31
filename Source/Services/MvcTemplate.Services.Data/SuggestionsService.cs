@@ -12,10 +12,10 @@
     public class SuggestionsService : ISuggestionService
     {
         private readonly IDbRepository<Suggestion> suggestions;
-        private readonly IDbRepository<VoteForSuggestion> votes;
+        private readonly IDbRepository<Vote> votes;
         private readonly IIdentifierProvider identifierProvider;
 
-        public SuggestionsService(IDbRepository<Suggestion> suggestions, IDbRepository<VoteForSuggestion> votes, IIdentifierProvider identifierProvider)
+        public SuggestionsService(IDbRepository<Suggestion> suggestions, IDbRepository<Vote> votes, IIdentifierProvider identifierProvider)
         {
             this.suggestions = suggestions;
             this.identifierProvider = identifierProvider;

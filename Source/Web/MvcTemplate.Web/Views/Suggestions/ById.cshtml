@@ -1,7 +1,7 @@
 ﻿@model MvcTemplate.Web.ViewModels.Suggestions.SuggestionWithVotingStatsViewModel
 @using Microsoft.AspNet.Identity
 @{
-    ViewBag.Title = "ById";
+    ViewBag.Title = "Suggestions";
 }
     <h4>Suggestion:</h4>
     <strong>@Model.Suggestion.Title</strong>
@@ -32,7 +32,7 @@ else
     <script>
         $("#target").click(function () {
             var id = @Model.Suggestion.Id;
-            $.post('/VotesForSuggestion/Vote/', { suggestionId: id })
+            $.post('/Suggestions/Vote/', { suggestionId: id })
             .done(function() {
                 location.reload();
             })
