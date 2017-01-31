@@ -51,15 +51,22 @@
         [ValidateAntiForgeryToken]
         public ActionResult AddSuggestion(SuggestionViewModel viewModel)
         {
-            var suggestion = new Suggestion();
+            if (this.ModelState.IsValid == true)
+            {
+                var suggestion = new Suggestion();
 
-            // TODO: use automapper for mapping instead
-            suggestion.AuthorId = this.User.Identity.GetUserId();
-            suggestion.Title = viewModel.Title;
-            suggestion.Content = viewModel.Content;
+                // TODO: use automapper for mapping instead
+                suggestion.AuthorId = this.User.Identity.GetUserId();
+                suggestion.Title = viewModel.Title;
+                suggestion.Content = viewModel.Content;
 
-            this.suggestions.Create(suggestion);
-            return this.Redirect("/Suggestions/All");
+                this.suggestions.Create(suggestion);
+                return this.Redirect("/Suggestions/All");
+            }
+            else
+            {
+                return this.View(viewModel);
+            }
         }
 
         // TODO: HttpDelete

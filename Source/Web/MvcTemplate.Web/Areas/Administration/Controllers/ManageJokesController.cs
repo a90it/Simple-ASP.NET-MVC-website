@@ -29,13 +29,20 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(JokeViewModel viewModel)
         {
-            // TODO: use automapper for mapping instead
-            var joke = new Joke();
-            joke.Content = viewModel.Content;
-            var category = this.categories.EnsureCategory(viewModel.Category);
-            joke.Category = category;
-            this.jokes.Create(joke);
-            return this.Redirect("/Administration/AdminHome/Index");
+            if (this.ModelState.IsValid == true)
+            {
+                // TODO: use automapper for mapping instead
+                var joke = new Joke();
+                joke.Content = viewModel.Content;
+                var category = this.categories.EnsureCategory(viewModel.Category);
+                joke.Category = category;
+                this.jokes.Create(joke);
+                return this.Redirect("/Administration/AdminHome/Index");
+            }
+            else
+            {
+                return this.View(viewModel);
+            }
         }
     }
 }

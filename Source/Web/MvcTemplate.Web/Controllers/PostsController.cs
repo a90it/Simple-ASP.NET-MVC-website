@@ -56,15 +56,22 @@
         [ValidateAntiForgeryToken]
         public ActionResult AddPost(PostViewModel viewModel)
         {
-            var post = new Post();
+            if (this.ModelState.IsValid == true)
+            {
+                var post = new Post();
 
-            // TODO: use automapper for mapping instead
-            post.AuthorId = this.User.Identity.GetUserId();
-            post.Title = viewModel.Title;
-            post.Content = viewModel.Content;
+                // TODO: use automapper for mapping instead
+                post.AuthorId = this.User.Identity.GetUserId();
+                post.Title = viewModel.Title;
+                post.Content = viewModel.Content;
 
-            this.posts.Create(post);
-            return this.Redirect("/Posts/All");
+                this.posts.Create(post);
+                return this.Redirect("/Posts/All");
+            }
+            else
+            {
+                return this.View(viewModel);
+            }
         }
 
         // TODO: HttpDelete
@@ -80,15 +87,23 @@
         [ValidateAntiForgeryToken]
         public ActionResult AddComment(CommentViewModel viewModel, int postId)
         {
-            var comment = new Comment();
+            if (this.ModelState.IsValid == true)
+            {
+                var comment = new Comment();
 
-            // TODO: use automapper for mapping instead
-            comment.AuthorId = this.User.Identity.GetUserId();
-            comment.Content = viewModel.Content;
-            comment.PostId = postId;
-            var stringPostId = this.identifierProvider.EncodeId(postId);
-            this.comments.Create(comment);
-            return this.Redirect(string.Format("/Post/{0}", stringPostId));
+                // TODO: use automapper for mapping instead
+                comment.AuthorId = this.User.Identity.GetUserId();
+                comment.Content = viewModel.Content;
+                comment.PostId = postId;
+                var stringPostId = this.identifierProvider.EncodeId(postId);
+                this.comments.Create(comment);
+                return this.Redirect(string.Format("/Post/{0}", stringPostId));
+            }
+            else
+            {
+                var stringPostId = this.identifierProvider.EncodeId(postId);
+                return this.Redirect(string.Format("/Post/{0}", stringPostId));
+            }
         }
 
         [HttpGet]

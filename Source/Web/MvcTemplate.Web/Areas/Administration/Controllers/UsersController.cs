@@ -44,13 +44,20 @@
         [ValidateAntiForgeryToken]
         public ActionResult EditUser(UserViewModel viewModel)
         {
-            var changedUser = this.users.GetById(viewModel.Id);
+            if (this.ModelState.IsValid == true)
+            {
+                var changedUser = this.users.GetById(viewModel.Id);
 
-            // TODO: use automapper for mapping instead
-            changedUser.UserName = viewModel.UserName;
-            changedUser.Email = viewModel.Email;
-            this.users.UpdateChanges(changedUser);
-            return this.Redirect(string.Format("/Administration/Users/ById/{0}", viewModel.Id));
+                // TODO: use automapper for mapping instead
+                changedUser.UserName = viewModel.UserName;
+                changedUser.Email = viewModel.Email;
+                this.users.UpdateChanges(changedUser);
+                return this.Redirect(string.Format("/Administration/Users/ById/{0}", viewModel.Id));
+            }
+            else
+            {
+                return this.View(viewModel);
+            }
         }
 
         [HttpGet]
