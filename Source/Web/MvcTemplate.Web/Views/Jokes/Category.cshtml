@@ -2,10 +2,19 @@
 @{
     ViewBag.Title = "Jokes";
 }
+@if (User.IsInRole("Administrator") == false)
+{
+<div>    
+    <h4>Joke category: @Model.Name</h4>
+</div>
+}
+else
+{
 <div>
     @Html.ActionLink("Permanent delete of category + jokes in it", "DeleteCategory", "Jokes", new { id = Model.Id }, new { @class = "btn btn-danger pull-right", role = "button" })
     <h4>Joke category: @Model.Name</h4>
 </div>
+}
 <div class="row">
     @foreach (var joke in Model.Jokes)
     {
