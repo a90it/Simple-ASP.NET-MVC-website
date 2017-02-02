@@ -6,8 +6,8 @@
     <h4>Suggestion:</h4>
     <strong>@Model.Suggestion.Title</strong>
     <div>@Model.Suggestion.Content</div>
-    <div>Author: @Model.Suggestion.Author</div>
-    <div>Total votes: @Model.Suggestion.Votes</div>
+    <div>Author: @Model.Suggestion.Creator</div>
+    <div>Total votes: @Model.Suggestion.UpVotes</div>
 <hr />
 
 @if (User.Identity.IsAuthenticated && Model.CurrentUserHasVoted == false)

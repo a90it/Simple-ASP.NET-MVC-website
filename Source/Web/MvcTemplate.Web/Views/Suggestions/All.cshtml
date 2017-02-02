@@ -14,7 +14,7 @@
             <a href="@suggestion.Url">
                 @Html.Raw(suggestion.Title)
             </a>
-            <div>Votes: @suggestion.Votes</div>
+            <div>Votes: @suggestion.UpVotes</div>
             <hr />
     }
 </div>
@@ -28,7 +28,7 @@ else
                 @Html.Raw(suggestion.Title)
             </a>
             @Html.ActionLink("Delete", "DeleteSuggestion", "Suggestions", new { id = suggestion.Id }, new { @class = "btn btn-danger pull-right", role = "button" })
-            <div>Votes: @suggestion.Votes</div>
+            <div>Votes: @suggestion.UpVotes</div>
             <hr />
         }
     </div>

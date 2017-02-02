@@ -53,13 +53,8 @@
         {
             if (this.ModelState.IsValid == true)
             {
-                var suggestion = new Suggestion();
-
-                // TODO: use automapper for mapping instead
+                var suggestion = this.Mapper.Map<Suggestion>(viewModel);
                 suggestion.AuthorId = this.User.Identity.GetUserId();
-                suggestion.Title = viewModel.Title;
-                suggestion.Content = viewModel.Content;
-
                 this.suggestions.Create(suggestion);
                 return this.Redirect("/Suggestions/All");
             }

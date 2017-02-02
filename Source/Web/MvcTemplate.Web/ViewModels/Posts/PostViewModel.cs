@@ -22,9 +22,9 @@
         [StringLength(300, ErrorMessage = "Must be between 10 and 300 symbols long.", MinimumLength = 10)]
         public string Content { get; set; }
 
-        public string AuthorId { get; set; }
+        public string CreatorId { get; set; }
 
-        public string Author { get; set; }
+        public string Creator { get; set; }
 
         public int CommentsCount { get; set; }
 
@@ -44,9 +44,10 @@
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Post, PostViewModel>()
-                .ForMember(x => x.Author, opt => opt.MapFrom(x => x.Author.UserName));
+                .ForMember(x => x.Creator, opt => opt.MapFrom(x => x.Author.UserName));
             configuration.CreateMap<Post, PostViewModel>()
-                .ForMember(x => x.AuthorId, opt => opt.MapFrom(x => x.Author.Id));
+                .ForMember(x => x.CreatorId, opt => opt.MapFrom(x => x.Author.Id))
+                .ReverseMap();
             configuration.CreateMap<Post, PostViewModel>()
                 .ForMember(x => x.CommentsCount, opt => opt.MapFrom(x => x.Comments.Count));
             configuration.CreateMap<Post, PostViewModel>()

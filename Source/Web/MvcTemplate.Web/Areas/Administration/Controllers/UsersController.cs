@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Web.Mvc;
     using Common;
+    using Data.Models;
     using Infrastructure.Mapping;
     using Services.Data;
     using ViewModels.Users;
@@ -46,11 +47,7 @@
         {
             if (this.ModelState.IsValid == true)
             {
-                var changedUser = this.users.GetById(viewModel.Id);
-
-                // TODO: use automapper for mapping instead
-                changedUser.UserName = viewModel.UserName;
-                changedUser.Email = viewModel.Email;
+                var changedUser = this.Mapper.Map<ApplicationUser>(viewModel);
                 this.users.UpdateChanges(changedUser);
                 return this.Redirect(string.Format("/Administration/Users/ById/{0}", viewModel.Id));
             }

@@ -26,7 +26,7 @@
             @Html.Raw(post.Title)
         </a>
             <div>@post.CommentsCount comments</div>
-            <div>Created by @post.Author on @post.CreatedOn</div>
+            <div>Created by @post.Creator on @post.CreatedOn</div>
             <hr class="forumHr"/>
     }
 </div>
@@ -43,7 +43,7 @@ else
                 @Html.ActionLink("Delete", "DeletePost", "Posts", new { id = post.Id }, new { @class = "btn btn-danger pull-right", role = "button" })
             </div>
             <div>@post.CommentsCount comments</div>
-            <div>Created by @post.Author on @post.CreatedOn</div>
+            <div>Created by @post.Creator on @post.CreatedOn</div>
             <hr class="forumHr" />
         }
     </div>

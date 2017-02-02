@@ -8,7 +8,7 @@
 <div class="forumPostBackground">
     <strong>@Model.Title</strong>
     <div>@Model.Content</div>
-    <small>Created by @Model.Author on @Model.CreatedOn</small>
+    <small>Created by @Model.Creator @Model.CreatedOn</small>
 </div>
 <br />
 <div>Comments:
@@ -26,7 +26,7 @@
 @foreach (var comment in Model.Comments)
 {
     <div>@comment.Content</div>
-    <small>Created by @comment.Author on @comment.CreatedOn</small>
+    <small>Created by @comment.Creator on @comment.CreatedOn</small>
     <hr />
 }
 

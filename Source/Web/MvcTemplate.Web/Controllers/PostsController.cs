@@ -58,13 +58,8 @@
         {
             if (this.ModelState.IsValid == true)
             {
-                var post = new Post();
-
-                // TODO: use automapper for mapping instead
+                var post = this.Mapper.Map<Post>(viewModel);
                 post.AuthorId = this.User.Identity.GetUserId();
-                post.Title = viewModel.Title;
-                post.Content = viewModel.Content;
-
                 this.posts.Create(post);
                 return this.Redirect("/Posts/All");
             }
@@ -89,15 +84,11 @@
         {
             if (this.ModelState.IsValid == true)
             {
-                var comment = new Comment();
-
-                // TODO: use automapper for mapping instead
+                var comment = this.Mapper.Map<Comment>(viewModel);
                 comment.AuthorId = this.User.Identity.GetUserId();
-                comment.Content = viewModel.Content;
                 comment.PostId = postId;
-                var stringPostId = this.identifierProvider.EncodeId(postId);
                 this.comments.Create(comment);
-                return this.Redirect(string.Format("/Post/{0}", stringPostId));
+                return this.Redirect(string.Format("/Post/{0}", this.identifierProvider.EncodeId(postId)));
             }
             else
             {
